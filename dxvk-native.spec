@@ -36,6 +36,9 @@ Provides:       bundled(spirv-headers)
 # This is a slim, customized version
 Provides:       bundled(mingw-headers)
 
+# Requires x86-specific headers for now...
+ExclusiveArch:  %{ix86} x86_64
+
 %description
 DXVK Native is a port of DXVK to Linux which allows it
 to be used natively without Wine.
