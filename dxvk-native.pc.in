@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+libdir=@libdir@
+includedir=@includedir@
+
+Name: dxvk-native-d3d@D3DVER@
+Description: Vulkan-based Direct3D @D3DVER@ implementation for Linux
+Version: @PACKAGE_VERSION@
+
+Libs: -L${libdir} -ldxvk_d3d@D3DVER@
+Cflags: -I${includedir}/directx -I${includedir}/windows
