@@ -1,6 +1,6 @@
 Name:           dxvk-native
 Version:        1.9.1a
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Vulkan-based D3D11 and D3D9 implementation for Linux
 
 # Main sources are zlib
@@ -108,6 +108,9 @@ sed -e "s:@prefix@:%{_prefix}:g" \
 
 
 %changelog
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.1a-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
 * Wed Oct 13 2021 Neal Gompa <ngompa@fedoraproject.org> - 1.9.1a-1
 - Initial package for Fedora (#2010139)
 
