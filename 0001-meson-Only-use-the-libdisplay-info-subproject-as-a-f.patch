@@ -1,0 +1,31 @@
+From 51cce8f275ea895ba057eb25b8c65c07d33ebcb7 Mon Sep 17 00:00:00 2001
+From: Ethan Lee <flibitijibibo@gmail.com>
+Date: Mon, 29 Jan 2024 17:39:48 -0500
+Subject: [PATCH] [meson] Only use the libdisplay-info subproject as a fallback
+
+---
+ meson.build | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 8e7f2c4d..020a21a6 100644
+--- a/meson.build
++++ b/meson.build
+@@ -39,8 +39,12 @@ dxvk_include_dirs = [
+   './include/spirv/include'
+ ]
+ 
+-proj_displayinfo = subproject('libdisplay-info')
+-dep_displayinfo = proj_displayinfo.get_variable('di_dep')
++dep_displayinfo = dependency(
++  'libdisplay-info',
++  version: ['>= 0.0.0', '< 0.2.0'],
++  fallback: ['libdisplay-info', 'di_dep'],
++  default_options: ['default_library=static'],
++)
+ 
+ if platform == 'windows'
+   compiler_args += [
+-- 
+2.43.0
+
