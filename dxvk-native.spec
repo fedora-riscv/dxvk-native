@@ -3,12 +3,13 @@ Version:        2.3
 Release:        1%{?dist}
 Summary:        Vulkan-based D3D11 and D3D9 implementation for Linux
 
-License:        zlib
+License:        Zlib
 URL:            https://github.com/doitsujin/dxvk
 Source0:        %{url}/archive/v%{version}/dxvk-%{version}.tar.gz
 # Will hopefully be upstreamed in a different form...
 Source1:        dxvk-native.pc.in
 
+# From: https://github.com/doitsujin/dxvk/pull/3824
 Patch01:        0001-meson-Only-use-the-libdisplay-info-subproject-as-a-f.patch
 
 BuildRequires:  gcc
@@ -53,70 +54,70 @@ sed -i 's^./include/vulkan/include^/usr/include^' meson.build
 sed -i 's^./include/spirv/include^/usr/include^' meson.build
 
 # Copy the MinGW DirectX headers to include/native/directx/
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d10_1.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d10_1shader.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d10effect.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d10.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d10misc.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d10sdklayers.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d10shader.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d11_1.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d11_2.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d11_3.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d11_4.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d11.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d11on12.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d11sdklayers.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d11shader.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d12.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d12sdklayers.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d12shader.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d8caps.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d8.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d8types.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d9caps.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d9.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d9types.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3dcaps.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3dcommon.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3dcompiler.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3d.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3dhal.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3drmdef.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3drm.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3drmobj.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3dtypes.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3dvec.inl include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3dx9anim.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3dx9core.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3dx9effect.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3dx9.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3dx9math.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3dx9math.inl include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3dx9mesh.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3dx9shader.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3dx9shape.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3dx9tex.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/d3dx9xof.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxdiag.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxerr8.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxerr9.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxfile.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxgi1_2.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxgi1_3.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxgi1_4.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxgi1_5.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxgi1_6.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxgicommon.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxgidebug.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxgiformat.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxgi.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxgitype.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxtmpl.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxva2api.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxva.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/dxvahd.h include/native/directx
-cp /usr/x86_64-w64-mingw32/sys-root/mingw/include/_mingw_unicode.h include/native/directx
+cp %{mingw64_includedir}/d3d10_1.h include/native/directx
+cp %{mingw64_includedir}/d3d10_1shader.h include/native/directx
+cp %{mingw64_includedir}/d3d10effect.h include/native/directx
+cp %{mingw64_includedir}/d3d10.h include/native/directx
+cp %{mingw64_includedir}/d3d10misc.h include/native/directx
+cp %{mingw64_includedir}/d3d10sdklayers.h include/native/directx
+cp %{mingw64_includedir}/d3d10shader.h include/native/directx
+cp %{mingw64_includedir}/d3d11_1.h include/native/directx
+cp %{mingw64_includedir}/d3d11_2.h include/native/directx
+cp %{mingw64_includedir}/d3d11_3.h include/native/directx
+cp %{mingw64_includedir}/d3d11_4.h include/native/directx
+cp %{mingw64_includedir}/d3d11.h include/native/directx
+cp %{mingw64_includedir}/d3d11on12.h include/native/directx
+cp %{mingw64_includedir}/d3d11sdklayers.h include/native/directx
+cp %{mingw64_includedir}/d3d11shader.h include/native/directx
+cp %{mingw64_includedir}/d3d12.h include/native/directx
+cp %{mingw64_includedir}/d3d12sdklayers.h include/native/directx
+cp %{mingw64_includedir}/d3d12shader.h include/native/directx
+cp %{mingw64_includedir}/d3d8caps.h include/native/directx
+cp %{mingw64_includedir}/d3d8.h include/native/directx
+cp %{mingw64_includedir}/d3d8types.h include/native/directx
+cp %{mingw64_includedir}/d3d9caps.h include/native/directx
+cp %{mingw64_includedir}/d3d9.h include/native/directx
+cp %{mingw64_includedir}/d3d9types.h include/native/directx
+cp %{mingw64_includedir}/d3dcaps.h include/native/directx
+cp %{mingw64_includedir}/d3dcommon.h include/native/directx
+cp %{mingw64_includedir}/d3dcompiler.h include/native/directx
+cp %{mingw64_includedir}/d3d.h include/native/directx
+cp %{mingw64_includedir}/d3dhal.h include/native/directx
+cp %{mingw64_includedir}/d3drmdef.h include/native/directx
+cp %{mingw64_includedir}/d3drm.h include/native/directx
+cp %{mingw64_includedir}/d3drmobj.h include/native/directx
+cp %{mingw64_includedir}/d3dtypes.h include/native/directx
+cp %{mingw64_includedir}/d3dvec.inl include/native/directx
+cp %{mingw64_includedir}/d3dx9anim.h include/native/directx
+cp %{mingw64_includedir}/d3dx9core.h include/native/directx
+cp %{mingw64_includedir}/d3dx9effect.h include/native/directx
+cp %{mingw64_includedir}/d3dx9.h include/native/directx
+cp %{mingw64_includedir}/d3dx9math.h include/native/directx
+cp %{mingw64_includedir}/d3dx9math.inl include/native/directx
+cp %{mingw64_includedir}/d3dx9mesh.h include/native/directx
+cp %{mingw64_includedir}/d3dx9shader.h include/native/directx
+cp %{mingw64_includedir}/d3dx9shape.h include/native/directx
+cp %{mingw64_includedir}/d3dx9tex.h include/native/directx
+cp %{mingw64_includedir}/d3dx9xof.h include/native/directx
+cp %{mingw64_includedir}/dxdiag.h include/native/directx
+cp %{mingw64_includedir}/dxerr8.h include/native/directx
+cp %{mingw64_includedir}/dxerr9.h include/native/directx
+cp %{mingw64_includedir}/dxfile.h include/native/directx
+cp %{mingw64_includedir}/dxgi1_2.h include/native/directx
+cp %{mingw64_includedir}/dxgi1_3.h include/native/directx
+cp %{mingw64_includedir}/dxgi1_4.h include/native/directx
+cp %{mingw64_includedir}/dxgi1_5.h include/native/directx
+cp %{mingw64_includedir}/dxgi1_6.h include/native/directx
+cp %{mingw64_includedir}/dxgicommon.h include/native/directx
+cp %{mingw64_includedir}/dxgidebug.h include/native/directx
+cp %{mingw64_includedir}/dxgiformat.h include/native/directx
+cp %{mingw64_includedir}/dxgi.h include/native/directx
+cp %{mingw64_includedir}/dxgitype.h include/native/directx
+cp %{mingw64_includedir}/dxtmpl.h include/native/directx
+cp %{mingw64_includedir}/dxva2api.h include/native/directx
+cp %{mingw64_includedir}/dxva.h include/native/directx
+cp %{mingw64_includedir}/dxvahd.h include/native/directx
+cp %{mingw64_includedir}/_mingw_unicode.h include/native/directx
 
 %build
 %meson -Dbuild_id=true
