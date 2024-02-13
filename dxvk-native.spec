@@ -1,6 +1,6 @@
 Name:           dxvk-native
 Version:        2.3
-Release:        1%{?dist}
+Release:        1.rv64%{?dist}
 Summary:        Vulkan-based D3D11 and D3D9 implementation for Linux
 
 License:        Zlib
@@ -26,7 +26,7 @@ Requires:       vulkan-loader%{?_isa}
 Requires:       SDL2%{?_isa}
 
 # Requires x86-specific headers for now...
-ExclusiveArch:  %{ix86} x86_64
+ExclusiveArch:  %{ix86} x86_64 riscv64
 
 %description
 DXVK Native is a port of DXVK to Linux which allows it
